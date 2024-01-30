@@ -1,8 +1,10 @@
-# Join Lines Context Aware
+# Join Lines Plus Context Aware
 
-A language-agnostic, context-aware Join Lines command for VS Code.
+A language-agnostic, context-aware Join Lines command for VS Code. This is a fork of Ian Obermiller's extension "Join Lines Context Aware". It has been modified to allow moving the
+joined content directly to the clipboard as well as being able to select large blocks of code
+and apply all at once.
 
-![Join Lines Context Aware animation](images/join-lines-context-aware.gif)
+![Extension Logo](images/join-lines-plus-context-aware-exticon.png)
 
 ## Features
 
@@ -18,13 +20,21 @@ command is `ctrl+j` or `cmd+j` on Mac.
 ```
 {
   "key": "ctrl+j",
-  "command": "join-lines-context-aware.join"
+  "command": "join-lines-plus-context-aware.join"
+},
+{
+  "key": "ctrl+shift+j",
+  "command": "join-lines-plus-context-aware.joinToBuffer"
 }
 ```
 
 ## Release Notes
 
 Users appreciate release notes as you update your extension.
+
+### 1.0.2
+
+- Forked from Ian Obermiller's 1.0.1 code
 
 ### 1.0.1
 

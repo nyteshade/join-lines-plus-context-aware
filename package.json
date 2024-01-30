@@ -1,12 +1,12 @@
 {
-  "name": "join-lines-context-aware",
-  "displayName": "Join Lines Context Aware",
-  "description": "Join lines command that does what you expect with comments and string literals.",
-  "version": "1.0.1",
+  "name": "join-lines-plus-context-aware",
+  "displayName": "Join Lines+ Context Aware",
+  "description": "Based on Ian Obermiller's join-lines-plus-context-aware extension",
+  "version": "1.0.2",
   "repository": {
-    "url": "https://github.com/ianobermiller/join-lines-context-aware"
+    "url": "https://github.com/nyteshade/join-lines-plus-context-aware.git"
   },
-  "publisher": "ianobermiller",
+  "publisher": "nyteshade",
   "engines": {
     "vscode": "^1.45.0"
   },
@@ -14,19 +14,24 @@
     "Other"
   ],
   "activationEvents": [
-    "onCommand:join-lines-context-aware.join"
+    "onCommand:join-lines-plus-context-aware.join",
+    "onCommand:join-lines-plus-context-aware.joinToBuffer"
   ],
   "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {
-        "command": "join-lines-context-aware.join",
-        "title": "Join Lines (Context Aware)"
+        "command": "join-lines-plus-context-aware.join",
+        "title": "Join Lines Plus (Context Aware)"
+      },
+      {
+        "command": "join-lines-plus-context-aware.joinToBuffer",
+        "title": "Join Lines Plus to Clipboard (Context Aware)"
       }
     ]
   },
   "scripts": {
-    "vscode:prepublish": "npm run compile",
+    "vscode:prepublish": "rm -rf out/* && npm run compile && mv out/src/* out/ && rm -r out/src",
     "compile": "tsc -p ./",
     "lint": "eslint src --ext ts",
     "watch": "tsc -watch -p ./",
