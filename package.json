@@ -2,15 +2,15 @@
   "name": "join-lines-plus-context-aware",
   "displayName": "Join Lines+ Context Aware",
   "description": "Based on Ian Obermiller's join-lines-plus-context-aware extension",
-  "version": "1.0.3",
+  "version": "1.0.6",
   "repository": {
     "url": "https://github.com/nyteshade/join-lines-plus-context-aware.git"
   },
   "publisher": "nyteshade",
+  "icon": "images/marketplace.png",
   "galleryBanner": {
     "color": "#282828",
-    "theme": "dark",
-    "icon": "./images/marketplace.png"
+    "theme": "dark"    
   },
   "engines": {
     "vscode": "^1.85.0"
@@ -18,11 +18,11 @@
   "categories": [
     "Other"
   ],
+  "main": "./out/extension.js",
   "activationEvents": [
     "onCommand:join-lines-plus-context-aware.join",
     "onCommand:join-lines-plus-context-aware.joinToBuffer"
   ],
-  "main": "./out/extension.js",
   "contributes": {
     "commands": [
       {

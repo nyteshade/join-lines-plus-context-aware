@@ -23,7 +23,7 @@ export function activate(context: vscode.ExtensionContext) {
     )
   };
 
-  for (let [, disposable] of Object.entries(commands)) {
+  for (let disposable of Object.values(commands)) {
     context.subscriptions.push(disposable);
   }
 }
