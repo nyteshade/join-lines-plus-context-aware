@@ -32,6 +32,10 @@ command is `ctrl+j` or `cmd+j` on Mac.
 
 Users appreciate release notes as you update your extension.
 
+### 1.0.9
+
+- Through much trial and error, the regexp escape issue has been found and squashed. Enjoy
+
 ### 1.0.2
 
 - Forked from Ian Obermiller's 1.0.1 code
