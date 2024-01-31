@@ -127,7 +127,7 @@ function isLastLineInDocument(
   selection: vscode.Selection, 
   document: vscode.TextDocument
 ): boolean {
-  return selection.end.line === document.lineCount - 1;
+  return selection.isSingleLine && (selection.end.line === document.lineCount - 1);
 }
 
 /**

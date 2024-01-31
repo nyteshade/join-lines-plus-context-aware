@@ -32,6 +32,11 @@ command is `ctrl+j` or `cmd+j` on Mac.
 
 Users appreciate release notes as you update your extension.
 
+### 1.0.12
+
+- Previously would not join lines if the last line in the document was also selected. 
+  This is now only true if the first and last line selected are the last line.
+
 ### 1.0.10
 
 - Sigh, off by one issue. Added toast for clipboard action to make up for it.
