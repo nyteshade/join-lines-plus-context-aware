@@ -1,4 +1,6 @@
-import escapeRegExp from 'lodash/escapeRegExp';
+function escapeRegExp(string: string) {
+  return string.replace(/[/\-\\^$*+?.()|[\]{}]/g, '\\$&');
+}
 
 const joinMarker = 'toTGdxMQxk4Z8ZTbLduzgDw51GQJWm8BWdCJshYJ';
 const stringConcatRegex = new RegExp(

@@ -11,21 +11,19 @@ import joinLines from './joinLines';
  * register the commands and to subscribe to events such as editor actions.
  */
 export function activate(context: vscode.ExtensionContext) {
-  const commands = {
-    jlca: vscode.commands.registerCommand(
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
       'join-lines-plus-context-aware.join',
       joinLinesCommand,
-    ),
+    )
+  );
 
-    jlca_copy: vscode.commands.registerCommand(
+  context.subscriptions.push(
+    vscode.commands.registerCommand(
       'join-lines-plus-context-aware.joinToBuffer',
       joinLinesToBufferCommand,
     )
-  };
-
-  for (let disposable of Object.values(commands)) {
-    context.subscriptions.push(disposable);
-  }
+  );
 }
 
 /**
@@ -64,13 +62,13 @@ async function joinLinesCommand() {
   await textEditor.edit(editBuilder => {
     for (const selection of textEditor.selections) {
       if (isLastLineInDocument(selection, document)) {
-        return;
+        continue;
       }
 
       const lines = getLinesFromSelection(document, selection);
       const combinedLines = combineLines(lines);
 
-      replaceEditorSelection(editBuilder, selection, combinedLines);
+      replaceEditorSelection(document, editBuilder, selection, combinedLines);
     }
   });
 }
@@ -82,9 +80,6 @@ async function joinLinesCommand() {
  * lines to the system clipboard. If the selection includes the last line of 
  * the document, it skips the operation for that selection to prevent errors.
  *
- * @param {vscode.Selection} selection - The current selection in the document.
- * @param {vscode.TextDocument} document - The document containing the 
- * selection.
  * @returns {Promise<void>} A promise that resolves when the operation is 
  * complete.
  */
@@ -95,16 +90,22 @@ async function joinLinesToBufferCommand() {
   }
 
   const {document} = textEditor;
+  let combinedText = '';
 
   for (const selection of textEditor.selections) {
     if (isLastLineInDocument(selection, document)) {
-      return;
+      continue;
     }
 
     const lines = getLinesFromSelection(document, selection);
     const combinedLines = combineLines(lines);
+    combinedText += combinedLines;
+  }
 
-    await vscode.env.clipboard.writeText(combinedLines);
+  if (combinedText.length > 0) {
+    // Remove the last newline character
+    combinedText = combinedText.slice(0, -1);
+    await vscode.env.clipboard.writeText(combinedText);
   }
 }
 
@@ -195,22 +196,22 @@ function combineLines(lines: string[]): string {
  * @param {string} combinedLines - The new text to replace the selection with.
  */
 function replaceEditorSelection(
+  document: vscode.TextDocument,
   editBuilder: vscode.TextEditorEdit, 
   selection: vscode.Selection, 
   combinedLines: string
 ): void {
   const range = new vscode.Range(
     selection.start.line,
-
     0,
-
     selection.isSingleLine 
       ? selection.start.line + 1 
       : selection.end.line,
-
     selection.isSingleLine 
       ? combinedLines.length 
-      : combinedLines.split('\n').pop()?.length ?? 0,
+      : document.lineAt(selection.end.line).text.length,
   );
   editBuilder.replace(range, combinedLines);
 }
+
+

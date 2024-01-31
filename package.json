@@ -2,7 +2,7 @@
   "name": "join-lines-plus-context-aware",
   "displayName": "Join Lines+ Context Aware",
   "description": "Based on Ian Obermiller's join-lines-plus-context-aware extension",
-  "version": "1.0.6",
+  "version": "1.0.9",
   "repository": {
     "url": "https://github.com/nyteshade/join-lines-plus-context-aware.git"
   },
@@ -58,8 +58,5 @@
     "bracketSpacing": false,
     "singleQuote": true,
     "trailingComma": "all"
-  },
-  "dependencies": {
-    "lodash": "^4.17.21"
   }
 }
