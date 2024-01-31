@@ -103,9 +103,10 @@ async function joinLinesToBufferCommand() {
   }
 
   if (combinedText.length > 0) {
-    // Remove the last newline character
-    combinedText = combinedText.slice(0, -1);
     await vscode.env.clipboard.writeText(combinedText);
+    vscode.window.showInformationMessage(
+      'The selected lines have been copied to the clipboard 📋'
+    );
   }
 }
 
