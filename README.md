@@ -4,7 +4,7 @@ A language-agnostic, context-aware Join Lines command for VS Code. This is a for
 joined content directly to the clipboard as well as being able to select large blocks of code
 and apply all at once.
 
-![Extension Logo](images/join-lines-plus-context-aware-exticon.png)
+![Extension Logo](./images/join-lines-plus-context-aware-exticon.png)
 
 ## Features
 

@@ -2,7 +2,7 @@
   "name": "join-lines-plus-context-aware",
   "displayName": "Join Lines+ Context Aware",
   "description": "Based on Ian Obermiller's join-lines-plus-context-aware extension",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "repository": {
     "url": "https://github.com/nyteshade/join-lines-plus-context-aware.git"
   },
@@ -10,7 +10,7 @@
   "icon": "images/marketplace.png",
   "galleryBanner": {
     "color": "#282828",
-    "theme": "dark"    
+    "theme": "dark"
   },
   "engines": {
     "vscode": "^1.85.0"
@@ -43,15 +43,14 @@
     "test": "vitest"
   },
   "devDependencies": {
-    "@types/lodash": "^4.14.202",
-    "@types/node": "^20.10.5",
+    "@types/node": "^20.11.13",
     "@types/vscode": "^1.85.0",
-    "@typescript-eslint/eslint-plugin": "^6.15.0",
-    "@typescript-eslint/parser": "^6.15.0",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "@vscode/vsce": "^2.23.0",
     "eslint": "^8.56.0",
     "typescript": "^5.3.3",
-    "vitest": "^1.1.0",
-    "vsce": "^1.75.0"
+    "vitest": "^1.2.2"
   },
   "prettier": {
     "arrowParens": "avoid",
